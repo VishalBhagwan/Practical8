@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Select Shape";
+}
+<h3>Choose the type of shape to display</h3>
+
+@using (Html.BeginForm("SelectShape", "Polygon", FormMethod.Post))
+{
+    <div class="mb-3">
+        <div>
+            <label>Circle</label>
+            @Html.RadioButton("shapeType", "Circle")
+        </div>
+        <div>
+            <label>Rectangle</label>
+            @Html.RadioButton("shapeType", "Rectangle")
+        </div>
+        <div>
+            <label>Ellipse</label>
+            @Html.RadioButton("shapeType", "Ellipse")
+        </div>
+        <div>
+            <label>Triangle</label>
+            @Html.RadioButton("shapeType", "Triangle")
+        </div>
+    </div>
+       
+    <div class="mt-4">
+        <input type="submit" value="Submit"/>
+    </div>
+        
+ }
+
