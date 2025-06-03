@@ -195,7 +195,6 @@ namespace Practical8.Models
 
         public override string getSVG()
         {
-            // Calculate the three points of the triangle
             int centerX = X + (Width / 2);
             int topY = Y;
             int leftX = X;
@@ -262,12 +261,12 @@ namespace Practical8.Models
 
         public override string getSVG()
         {
-            int cx = Width + 10;   // RadiusX + margin
-            int cy = RadiusY + 10;  // RadiusY + margin
+            int cx = Width;
+            int cy = RadiusY; 
 
             return $"<svg width='{canvasWidth}' height='{canvasHeight}'>" +
                    $"<ellipse cx='{cx}' cy='{cy}' rx='{Width}' ry='{RadiusY}' " +
-                   $"style='fill:lightgreen;stroke:black;stroke-width:2' />" +
+                   $"style='fill:{FillColour};stroke:{StrokeColour};stroke-width:{StrokeWidth}' />" +
                    $"</svg>";
         }
 

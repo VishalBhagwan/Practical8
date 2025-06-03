@@ -1,4 +1,4 @@
-﻿@model Practical8.Models.Polygon
+﻿@model List<Practical8.Models.Polygon>
 @{
     ViewBag.Title = "Display";
 }
@@ -15,21 +15,22 @@
 
 
 <div>
-    <p class="shape-description">@Model.Description</p>
-
-    <p class="shape-area">Area: @Model.getArea()</p>
-</div>
-
-<div>
-    @Html.Raw(Model.getSVG())
+    @foreach (var shape in Model)
+    {
+        <p class="shape-description">@shape.Description</p>
+        <p class="shape-area">Area: @shape.getArea()</p>
+        <div>
+            @Html.Raw(shape.getSVG())
+        </div>
+    }
 </div>
 
 <style>
-    .shape-description{
+    .shape-description {
         font-size: 15px;
     }
 
-    .shape-area{
+    .shape-area {
         font-size: 12px;
     }
 </style>

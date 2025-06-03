@@ -1,0 +1,39 @@
+﻿@model List<Practical8.Models.Polygon>
+@{
+    ViewBag.Title = "All Shapes";
+}
+
+<h2>Created Shapes</h2>
+
+@if (!Model.Any())
+{
+    <p>No shapes created yet</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Area</th>
+                <th>Preview</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var shape in Model)
+            {
+                <tr>
+                    <td>@shape.GetType().Name</td>
+                    <td>@shape.Description</td>
+                    <td>@shape.getArea()</td>
+                    <td>@Html.Raw(shape.getSVG())</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<div>
+    @Html.ActionLink("Create New Shape", "SelectShape", null, new { @class = "btn btn-primary" })
+</div>

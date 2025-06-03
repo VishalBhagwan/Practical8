@@ -185,6 +185,7 @@
     <Content Include="Views\Polygon\Ellipse.cshtml" />
     <Content Include="Views\Polygon\Triangle.cshtml" />
     <Content Include="Views\Polygon\Display.cshtml" />
+    <Content Include="Views\Polygon\ShapesList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
