@@ -1,24 +1,35 @@
-﻿@model Practical8.Models.Rectangle
+﻿@model Practical8.Models.Polygon
 @{
-    ViewBag.Title = "Rectangle Display";
+    ViewBag.Title = "Display";
 }
 
-<h2>Rectangle Details</h2>
+<div class="clearfix mb-4">
+    @using (Html.BeginForm("RedirectToSelectShape", "Polygon", FormMethod.Post, new { @class = "float-end" }))
+    {
 
-@using (Html.BeginForm("RedirectToSelectShape", "Polygon", FormMethod.Post))
-{
-    <div>
+
         <input type="submit" value="Add Shape" class="btn btn-primary" />
-    </div>
-}
+
+    }
+</div>
+
 
 <div>
-    <h4>Description: @Model.Description</h4>
+    <p class="shape-description">@Model.Description</p>
 
-    <p>Area: @Model.getArea()</p>
+    <p class="shape-area">Area: @Model.getArea()</p>
 </div>
 
 <div>
     @Html.Raw(Model.getSVG())
 </div>
 
+<style>
+    .shape-description{
+        font-size: 15px;
+    }
+
+    .shape-area{
+        font-size: 12px;
+    }
+</style>

@@ -44,10 +44,26 @@ namespace Practical8.Controllers
             return RedirectToAction("SelectShape");
         }
 
-        public ActionResult Circle()
+        //Square
+        public ActionResult Square()
         {
             return View();
         }
+
+        [HttpGet]
+        public ActionResult CreateSquare()
+        {
+            return View(new Square(0));
+        }
+
+        [HttpPost]
+        public ActionResult CreateSquare(Square model)
+        {
+            Session["shape"] = model;
+            return RedirectToAction("Display");
+        }
+
+         
 
         //Rectangle
         public ActionResult Rectangle()
@@ -56,28 +72,19 @@ namespace Practical8.Controllers
         }
 
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult CreateRectangle()
         {
-            return View(new Rectangle(0, 0)); // initialize for the form
+            return View(new Rectangle(0, 0));
         }
 
         [HttpPost]
-        public ActionResult Create(Rectangle model)
+        public ActionResult CreateRectangle(Rectangle model)
         {
-            // You can validate here if needed
-            Session["rectangle"] = model; // pass the model to the next view
+            Session["shape"] = model;
             return RedirectToAction("Display");
         }
 
-        public ActionResult Display()
-        {
-            var rectangle = Session["rectangle"] as Rectangle;
-            if (rectangle == null)
-            {
-                return RedirectToAction("Create");
-            }
-            return View(rectangle);
-        }
+
 
         //Ellipse
         public ActionResult Ellipse()
@@ -85,9 +92,49 @@ namespace Practical8.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult CreateEllipsee()
+        {
+            return View(new Ellipse(0, 0));
+        }
+
+        [HttpPost]
+        public ActionResult CreateEllipse(Ellipse model)
+        {
+            Session["shape"] = model;
+            return RedirectToAction("Display");
+        }
+
+
+
+        //Triangle
         public ActionResult Triangle()
         {
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult CreateTriangle()
+        {
+            return View(new Triangle(0, 0));
+        }
+
+        [HttpPost]
+        public ActionResult CreateTriangle(Triangle model)
+        {
+            Session["shape"] = model;
+            return RedirectToAction("Display");
+        }
+
+        //Display
+        public ActionResult Display()
+        {
+            var shape = Session["shape"] as Polygon;
+            if (shape == null)
+            {
+                return RedirectToAction("CreateRectangle");
+            }
+            return View(shape);
         }
     }
 }

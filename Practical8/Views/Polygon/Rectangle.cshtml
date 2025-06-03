@@ -6,8 +6,9 @@
 
 <div class="shape-form-container">
     <h2>Add a Rectangle</h2>
+    <h3>Rectangle</h3>
 
-    @using (Html.BeginForm("Create", "Polygon", FormMethod.Post))
+    @using (Html.BeginForm("CreateRectangle", "Polygon", FormMethod.Post))
     {
         <div class="form-row">
             <div class="form-label">Description</div>
@@ -20,18 +21,24 @@
         <div class="form-row">
             <div class="form-label">Fill Colour</div>
             <div class="form-input">
-                @Html.DropDownListFor(m => m.FillColour,
-                    new SelectList(new[] { "Green", "Red", "Blue" }),
-                    new { @class = "form-control" })
+                <select name="FillColour" class="form-control color-dropdown">
+                    <option value="#F1472E">Red</option>
+                    <option value="#ff8e0e">Orange</option>
+                    <option value="#ffff00">Yellow</option>
+                    <option value="#49ff00">Green</option>
+                </select>
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-label">Stroke Colour</div>
             <div class="form-input">
-                @Html.DropDownListFor(m => m.StrokeColour,
-                    new SelectList(new[] { "Black", "Red", "Yellow" }),
-                    new { @class = "form-control" })
+                <select name="StrokeColour" class="form-control color-dropdown">
+                    <option value="#000000">Black</option>
+                    <option value="#F1472E">Red</option>
+                    <option value="#ffff00">Yellow</option>
+                    <option value="#ffffff">White</option>
+                </select>
             </div>
         </div>
 
@@ -75,12 +82,17 @@
 
         <div class="form-actions">
             <input type="submit" value="Create" class="btn btn-primary" />
-            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Back to List", "SelectShape", "Polygon", null, new { @class = "btn btn-default" })
         </div>
     }
 </div>
 
 <style>
+    h3{
+        font-weight: normal;
+        font-size: 22px;
+    }
+
     .shape-form-container {
         max-width: 600px;
         margin: 0 auto;
@@ -115,5 +127,13 @@
 
     .btn {
         margin-right: 10px;
+    }
+
+    .color-dropdown option {
+        padding-left: 30px;
+        position: relative;
+        background-repeat: no-repeat;
+        background-position: 5px center;
+        background-size: 20px 20px;
     }
 </style>

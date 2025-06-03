@@ -180,7 +180,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Polygon\SelectShape.cshtml" />
-    <Content Include="Views\Polygon\Circle.cshtml" />
+    <Content Include="Views\Polygon\Square.cshtml" />
     <Content Include="Views\Polygon\Rectangle.cshtml" />
     <Content Include="Views\Polygon\Ellipse.cshtml" />
     <Content Include="Views\Polygon\Triangle.cshtml" />

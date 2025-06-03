@@ -7,6 +7,13 @@ namespace Practical8.Models
 {
     public abstract class Polygon
     {
+        public string Description { get; set; }
+        public string FillColour { get; set; }
+        public string StrokeColour { get; set; }
+        public int StrokeWidth { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
+
         private int sides;
         public int Sides
         {
@@ -34,6 +41,30 @@ namespace Practical8.Models
     //Create derived class = square
     public class Square : Polygon
     {
+        public Square()
+        {
+            Width = 0;
+            FillColour = "#40ff00";
+            StrokeColour = "#000000";
+            StrokeWidth = 2;
+            X = 10;
+            Y = 10;
+            Description = "";
+            Sides = 4;
+        }
+
+        public Square(int width, string fillColour = "#40ff00", string strokeColour = "#000000",
+                         int strokeWidth = 2, int x = 10, int y = 10, string description = "")
+        {
+            Width = width;
+            FillColour = fillColour;
+            StrokeColour = strokeColour;
+            StrokeWidth = strokeWidth;
+            X = x;
+            Y = y;
+            Description = description;
+            Sides = 4;
+        }
         //constructor 
         public Square(int width)
         {
@@ -67,21 +98,14 @@ namespace Practical8.Models
     //Create derived class - rectangle
     public class Rectangle : Polygon
     {
-        // Additional visual/style properties
         public int Height { get; set; }
-        public string Description { get; set; }
-        public string FillColour { get; set; }
-        public string StrokeColour { get; set; }
-        public int StrokeWidth { get; set; }
-        public int X { get; set; }
-        public int Y { get; set; }
 
         public Rectangle()
         {
             Width = 0;
             Height = 0;
-            FillColour = "lightcoral";
-            StrokeColour = "black";
+            FillColour = "#40ff00";
+            StrokeColour = "#000000";
             StrokeWidth = 2;
             X = 10;
             Y = 10;
@@ -89,8 +113,7 @@ namespace Practical8.Models
             Sides = 4;
         }
 
-        // Constructor including visual properties
-        public Rectangle(int width, int height, string fillColour = "lightcoral", string strokeColour = "black",
+        public Rectangle(int width, int height, string fillColour = "#40ff00", string strokeColour = "#000000",
                          int strokeWidth = 2, int x = 10, int y = 10, string description = "")
         {
             Width = width;
@@ -126,14 +149,35 @@ namespace Practical8.Models
         }
     }
 
-
+    //Triangle
     public class Triangle : Polygon
     {
         public int Height { get; set; }
-        public Triangle(int width, int height)
+
+        public Triangle()
+        {
+            Width = 0;
+            Height = 0;
+            FillColour = "#40ff00";
+            StrokeColour = "#000000";
+            StrokeWidth = 2;
+            X = 10;
+            Y = 10;
+            Description = "";
+            Sides = 3;
+        }
+
+        public Triangle(int width, int height, string fillColour = "#40ff00", string strokeColour = "#000000",
+                         int strokeWidth = 2, int x = 10, int y = 10, string description = "")
         {
             Width = width;
             Height = height;
+            FillColour = fillColour;
+            StrokeColour = strokeColour;
+            StrokeWidth = strokeWidth;
+            X = x;
+            Y = y;
+            Description = description;
             Sides = 3;
         }
 
@@ -151,11 +195,17 @@ namespace Practical8.Models
 
         public override string getSVG()
         {
-            int halfBase = Width / 2;
+            // Calculate the three points of the triangle
+            int centerX = X + (Width / 2);
+            int topY = Y;
+            int leftX = X;
+            int rightX = X + Width;
+            int bottomY = Y + Height;
+
             return $"<svg width='{canvasWidth}' height='{canvasHeight}'>" +
-                   $"<polygon points='{10},{Height + 10} {10 + Width},{Height + 10} {10 + halfBase},10' " +
-                   $"style='fill:lightyellow;stroke:black;stroke-width:2' />" +
-                   $"</svg>";
+                   $"<polygon points='{centerX},{topY} {leftX},{bottomY} {rightX},{bottomY}' " +
+                   $"style='fill:{FillColour};stroke:{StrokeColour};stroke-width:{StrokeWidth}' />" +
+                   "</svg>";
         }
 
     }
@@ -163,6 +213,33 @@ namespace Practical8.Models
     public class Ellipse : Polygon
     {
         public int RadiusY { get; set; }
+
+        public Ellipse()
+        {
+            Width = 0;
+            RadiusY = 0;
+            FillColour = "#40ff00";
+            StrokeColour = "#000000";
+            StrokeWidth = 2;
+            X = 10;
+            Y = 10;
+            Description = "";
+            Sides = 0;
+        }
+
+        public Ellipse(int radiusx, int radiusy, string fillColour = "#40ff00", string strokeColour = "#000000",
+                         int strokeWidth = 2, int x = 10, int y = 10, string description = "")
+        {
+            Width = radiusx;
+            RadiusY = radiusy;
+            FillColour = fillColour;
+            StrokeColour = strokeColour;
+            StrokeWidth = strokeWidth;
+            X = x;
+            Y = y;
+            Description = description;
+            Sides = 0;
+        }
 
         public Ellipse(int radiusX, int radiusY)
         {

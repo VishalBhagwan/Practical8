@@ -1,7 +1,139 @@
 ﻿
+@model Practical8.Models.Triangle
 @{
-    ViewBag.Title = "Triangle";
+    ViewBag.Title = "Add a Rectangle";
 }
 
-<h2>Triangle</h2>
+<div class="shape-form-container">
+    <h2>Add a Triangle</h2>
+    <h3>Triangle</h3>
 
+    @using (Html.BeginForm("CreateTriangle", "Polygon", FormMethod.Post))
+    {
+        <div class="form-row">
+            <div class="form-label">Description</div>
+            <div class="form-input">
+                @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+            </div>
+
+        </div>
+
+        <div class="form-row">
+            <div class="form-label">Fill Colour</div>
+            <div class="form-input">
+                <select name="FillColour" class="form-control color-dropdown">
+                    <option value="#F1472E">Red</option>
+                    <option value="#ff8e0e">Orange</option>
+                    <option value="#ffff00">Yellow</option>
+                    <option value="#49ff00">Green</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-label">Stroke Colour</div>
+            <div class="form-input">
+                <select name="StrokeColour" class="form-control color-dropdown">
+                    <option value="#000000">Black</option>
+                    <option value="#F1472E">Red</option>
+                    <option value="#ffff00">Yellow</option>
+                    <option value="#ffffff">White</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-label">Stroke Width</div>
+            <div class="form-input">
+                @Html.TextBoxFor(m => m.StrokeWidth, new { @class = "form-control", type = "number", min = "1" })
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-label">X coordinate</div>
+            <div class="form-input">
+                @Html.TextBoxFor(m => m.X, new { @class = "form-control", type = "number", min = "0" })
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-label">Y coordinate</div>
+            <div class="form-input">
+                @Html.TextBoxFor(m => m.Y, new { @class = "form-control", type = "number", min = "0" })
+            </div>
+
+        </div>
+
+        <div class="form-row">
+            <div class="form-label">Width</div>
+            <div class="form-input">
+                @Html.TextBoxFor(m => m.Width, new { @class = "form-control", type = "number", min = "1" })
+            </div>
+
+        </div>
+
+        <div class="form-row">
+            <div class="form-label">Height</div>
+            <div class="form-input">
+                @Html.TextBoxFor(m => m.Height, new { @class = "form-control", type = "number", min = "1" })
+            </div>
+
+        </div>
+
+        <div class="form-actions">
+            <input type="submit" value="Create" class="btn btn-primary" />
+            @Html.ActionLink("Back to List", "SelectShape", "Polygon", null, new { @class = "btn btn-default" })
+        </div>
+    }
+</div>
+
+<style>
+    h3 {
+        font-weight: normal;
+        font-size: 22px;
+    }
+
+    .shape-form-container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .form-row {
+        display: flex;
+        margin-bottom: 15px;
+        align-items: center;
+    }
+
+    .form-label {
+        width: 200px;
+        font-weight: bold;
+        padding-right: 15px;
+        text-align: right;
+    }
+
+    .form-input {
+        flex: 1;
+    }
+
+    .form-control {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .form-actions {
+        margin-top: 20px;
+        padding-left: 215px;
+    }
+
+    .btn {
+        margin-right: 10px;
+    }
+
+    .color-dropdown option {
+        padding-left: 30px;
+        position: relative;
+        background-repeat: no-repeat;
+        background-position: 5px center;
+        background-size: 20px 20px;
+    }
+</style>

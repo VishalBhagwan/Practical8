@@ -1,14 +1,14 @@
 ﻿
-@model Practical8.Models.Ellipse
+@model Practical8.Models.Square
 @{
-    ViewBag.Title = "Add a Ellipse";
+    ViewBag.Title = "Add a Square";
 }
 
 <div class="shape-form-container">
-    <h2>Add a Ellipse</h2>
-    <h3>Ellipse</h3>
+    <h2>Add a Square</h2>
+    <h3>Square</h3>
 
-    @using (Html.BeginForm("CreateEllipse", "Polygon", FormMethod.Post))
+    @using (Html.BeginForm("CreateSquare", "Polygon", FormMethod.Post))
     {
         <div class="form-row">
             <div class="form-label">Description</div>
@@ -65,17 +65,9 @@
         </div>
 
         <div class="form-row">
-            <div class="form-label">RadiusX</div>
+            <div class="form-label">Width</div>
             <div class="form-input">
                 @Html.TextBoxFor(m => m.Width, new { @class = "form-control", type = "number", min = "1" })
-            </div>
-
-        </div>
-
-        <div class="form-row">
-            <div class="form-label">RadiusY</div>
-            <div class="form-input">
-                @Html.TextBoxFor(m => m.RadiusY, new { @class = "form-control", type = "number", min = "1" })
             </div>
 
         </div>
