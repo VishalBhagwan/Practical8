@@ -21,8 +21,12 @@ namespace Practical8.Models
             return "#Sides is " + Sides;
         }
 
+        public const int canvasWidth = 450;
+        public const int canvasHeight =  450;
+
         public abstract void DisplaySidesAndArea();
 
+        public abstract string getArea();
         public abstract string getSVG();
 
     }
@@ -45,9 +49,15 @@ namespace Practical8.Models
             Console.WriteLine("Square: " + base.getSides() + " and area is " + area);
         }
 
+        public override string getArea()
+        {
+            int area = Width * Width;
+            return area.ToString();
+        }
+
         public override string getSVG()
         {
-            return $"<svg width='{Width + 20}' height='{Width + 20}'>" +
+            return $"<svg width='{canvasWidth}' height='{canvasHeight}'>" +
                    $"<rect x='10' y='10' width='{Width}' height='{Width}' " +
                    $"style='fill:lightblue;stroke:black;stroke-width:2' />" +
                    $"</svg>";
@@ -101,10 +111,15 @@ namespace Practical8.Models
             Console.WriteLine("Rectangle: " + base.getSides() + " and area is " + area);
         }
 
-        // SVG rendering logic (includes border canvas like RectangleShape)
+        public override string getArea()
+        {
+            int area = Width * Height;
+            return area.ToString();
+        }
+
         public override string getSVG()
         {
-            return $"<svg width='400' height='300' style='border:1px dashed grey'>" +
+            return $"<svg width='{canvasWidth}' height='{canvasHeight}' style='border:1px dashed grey'>" +
                    $"<rect x='{X}' y='{Y}' width='{Width}' height='{Height}' " +
                    $"style='fill:{FillColour.ToLower()};stroke:{StrokeColour.ToLower()};stroke-width:{StrokeWidth}' />" +
                    $"</svg>";
@@ -128,10 +143,16 @@ namespace Practical8.Models
             Console.WriteLine("Triangle: " + base.getSides() + " and area is " + area);
         }
 
+        public override string getArea()
+        {
+            double area = 0.5 * Width * Height;
+            return area.ToString();
+        }
+
         public override string getSVG()
         {
             int halfBase = Width / 2;
-            return $"<svg width='{Width + 20}' height='{Height + 20}'>" +
+            return $"<svg width='{canvasWidth}' height='{canvasHeight}'>" +
                    $"<polygon points='{10},{Height + 10} {10 + Width},{Height + 10} {10 + halfBase},10' " +
                    $"style='fill:lightyellow;stroke:black;stroke-width:2' />" +
                    $"</svg>";
@@ -156,12 +177,18 @@ namespace Practical8.Models
             Console.WriteLine("Ellipse: " + base.getSides() + " and area is " + area);
         }
 
+        public override string getArea()
+        {
+            double area = Math.PI * Width * RadiusY;
+            return area.ToString();
+        }
+
         public override string getSVG()
         {
             int cx = Width + 10;   // RadiusX + margin
             int cy = RadiusY + 10;  // RadiusY + margin
 
-            return $"<svg width='{2 * Width + 20}' height='{2 * RadiusY + 20}'>" +
+            return $"<svg width='{canvasWidth}' height='{canvasHeight}'>" +
                    $"<ellipse cx='{cx}' cy='{cy}' rx='{Width}' ry='{RadiusY}' " +
                    $"style='fill:lightgreen;stroke:black;stroke-width:2' />" +
                    $"</svg>";

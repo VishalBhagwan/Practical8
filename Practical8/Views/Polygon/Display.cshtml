@@ -5,17 +5,20 @@
 
 <h2>Rectangle Details</h2>
 
+@using (Html.BeginForm("RedirectToSelectShape", "Polygon", FormMethod.Post))
+{
+    <div>
+        <input type="submit" value="Add Shape" class="btn btn-primary" />
+    </div>
+}
+
 <div>
     <h4>Description: @Model.Description</h4>
-    <p>Width: @Model.Width, Height: @Model.Height</p>
-    <p>Position: (@Model.X, @Model.Y)</p>
-    <p>Fill: @Model.FillColour, Stroke: @Model.StrokeColour</p>
+
+    <p>Area: @Model.getArea()</p>
 </div>
 
 <div>
     @Html.Raw(Model.getSVG())
 </div>
 
-<div>
-    @Html.ActionLink("Create Another", "Create")
-</div>

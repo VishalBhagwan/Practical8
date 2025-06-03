@@ -4,44 +4,116 @@
     ViewBag.Title = "Add a Rectangle";
 }
 
-<h2>Add a Rectangle</h2>
+<div class="shape-form-container">
+    <h2>Add a Rectangle</h2>
 
-@using (Html.BeginForm("Create", "Polygon", FormMethod.Post))
-{
-    <div>
-        <label>Description</label>
-        @Html.TextBoxFor(m => m.Description)
-    </div>
-    <div>
-        <label>Fill Colour</label>
-        @Html.DropDownListFor(m => m.FillColour, new SelectList(new[] { "Green", "Red", "Blue" }))
-    </div>
-    <div>
-        <label>Stroke Colour</label>
-        @Html.DropDownListFor(m => m.StrokeColour, new SelectList(new[] { "Black", "Red", "Yellow" }))
-    </div>
-    <div>
-        <label>Stroke Width</label>
-        @Html.TextBoxFor(m => m.StrokeWidth)
-    </div>
-    <div>
-        <label>X coordinate of shape</label>
-        @Html.TextBoxFor(m => m.X)
-    </div>
-    <div>
-        <label>Y coordinate of shape</label>
-        @Html.TextBoxFor(m => m.Y)
-    </div>
-    <div>
-        <label>Width of rectangle</label>
-        @Html.TextBoxFor(m => m.Width)
-    </div>
-    <div>
-        <label>Height of rectangle</label>
-        @Html.TextBoxFor(m => m.Height)
-    </div>
-    <input type="submit" value="Create" />
-}
+    @using (Html.BeginForm("Create", "Polygon", FormMethod.Post))
+    {
+        <div class="form-row">
+            <div class="form-label">Description</div>
+            <div class="form-input">
+                @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+            </div>
 
+        </div>
 
+        <div class="form-row">
+            <div class="form-label">Fill Colour</div>
+            <div class="form-input">
+                @Html.DropDownListFor(m => m.FillColour,
+                    new SelectList(new[] { "Green", "Red", "Blue" }),
+                    new { @class = "form-control" })
+            </div>
+        </div>
 
+        <div class="form-row">
+            <div class="form-label">Stroke Colour</div>
+            <div class="form-input">
+                @Html.DropDownListFor(m => m.StrokeColour,
+                    new SelectList(new[] { "Black", "Red", "Yellow" }),
+                    new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-label">Stroke Width</div>
+            <div class="form-input">
+                @Html.TextBoxFor(m => m.StrokeWidth, new { @class = "form-control", type = "number", min = "1" })
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-label">X coordinate</div>
+            <div class="form-input">
+                @Html.TextBoxFor(m => m.X, new { @class = "form-control", type = "number", min = "0" })
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-label">Y coordinate</div>
+            <div class="form-input">
+                @Html.TextBoxFor(m => m.Y, new { @class = "form-control", type = "number", min = "0" })
+            </div>
+
+        </div>
+
+        <div class="form-row">
+            <div class="form-label">Width</div>
+            <div class="form-input">
+                @Html.TextBoxFor(m => m.Width, new { @class = "form-control", type = "number", min = "1" })
+            </div>
+
+        </div>
+
+        <div class="form-row">
+            <div class="form-label">Height</div>
+            <div class="form-input">
+                @Html.TextBoxFor(m => m.Height, new { @class = "form-control", type = "number", min = "1" })
+            </div>
+
+        </div>
+
+        <div class="form-actions">
+            <input type="submit" value="Create" class="btn btn-primary" />
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+        </div>
+    }
+</div>
+
+<style>
+    .shape-form-container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .form-row {
+        display: flex;
+        margin-bottom: 15px;
+        align-items: center;
+    }
+
+    .form-label {
+        width: 200px;
+        font-weight: bold;
+        padding-right: 15px;
+        text-align: right;
+    }
+
+    .form-input {
+        flex: 1;
+    }
+
+    .form-control {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .form-actions {
+        margin-top: 20px;
+        padding-left: 215px;
+    }
+
+    .btn {
+        margin-right: 10px;
+    }
+</style>

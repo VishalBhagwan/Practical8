@@ -15,9 +15,33 @@ namespace Practical8.Controllers
             return View();
         }
 
-        public ActionResult SelectShape()
+        public ActionResult SelectShape(string shapeType)
         {
-            return View();
+            if (shapeType == "Square")
+            {
+                return RedirectToAction("Square");
+            }
+            else if (shapeType == "Rectangle")
+            {
+                return RedirectToAction("Rectangle");
+            }
+            else if (shapeType == "Ellipse")
+            {
+                return RedirectToAction("Ellipse");
+            }
+            else if (shapeType == "Circle")
+            {
+                return RedirectToAction("Circle");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        public ActionResult RedirectToSelectShape()
+        {
+            return RedirectToAction("SelectShape");
         }
 
         public ActionResult Circle()
