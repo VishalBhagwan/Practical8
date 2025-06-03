@@ -1,0 +1,21 @@
+﻿@model Practical8.Models.Rectangle
+@{
+    ViewBag.Title = "Rectangle Display";
+}
+
+<h2>Rectangle Details</h2>
+
+<div>
+    <h4>Description: @Model.Description</h4>
+    <p>Width: @Model.Width, Height: @Model.Height</p>
+    <p>Position: (@Model.X, @Model.Y)</p>
+    <p>Fill: @Model.FillColour, Stroke: @Model.StrokeColour</p>
+</div>
+
+<div>
+    @Html.Raw(Model.getSVG())
+</div>
+
+<div>
+    @Html.ActionLink("Create Another", "Create")
+</div>

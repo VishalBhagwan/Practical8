@@ -1,7 +1,47 @@
 ﻿
+@model Practical8.Models.Rectangle
 @{
-    ViewBag.Title = "Rectangle";
+    ViewBag.Title = "Add a Rectangle";
 }
 
-<h2>Rectangle</h2>
+<h2>Add a Rectangle</h2>
+
+@using (Html.BeginForm("Create", "Polygon", FormMethod.Post))
+{
+    <div>
+        <label>Description</label>
+        @Html.TextBoxFor(m => m.Description)
+    </div>
+    <div>
+        <label>Fill Colour</label>
+        @Html.DropDownListFor(m => m.FillColour, new SelectList(new[] { "Green", "Red", "Blue" }))
+    </div>
+    <div>
+        <label>Stroke Colour</label>
+        @Html.DropDownListFor(m => m.StrokeColour, new SelectList(new[] { "Black", "Red", "Yellow" }))
+    </div>
+    <div>
+        <label>Stroke Width</label>
+        @Html.TextBoxFor(m => m.StrokeWidth)
+    </div>
+    <div>
+        <label>X coordinate of shape</label>
+        @Html.TextBoxFor(m => m.X)
+    </div>
+    <div>
+        <label>Y coordinate of shape</label>
+        @Html.TextBoxFor(m => m.Y)
+    </div>
+    <div>
+        <label>Width of rectangle</label>
+        @Html.TextBoxFor(m => m.Width)
+    </div>
+    <div>
+        <label>Height of rectangle</label>
+        @Html.TextBoxFor(m => m.Height)
+    </div>
+    <input type="submit" value="Create" />
+}
+
+
 
